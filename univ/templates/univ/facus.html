@@ -1,0 +1,36 @@
+{% extends 'univ/base.html' %}
+
+{% block facultades %}
+<div class="faculty slideanim" id="faculty">
+    <h3>FACULTADES</h3>
+		{% for facu in all_facus %}
+		{% if facu.URLFoto %}
+		<div class="col-md-4 col-sm-3 team-top team-in">
+			<div class="view view-seventh">
+            	<img class="img-responsive" src="{{ facu.URLFoto }}" alt="{{ facu.Nombre }}">
+				<div class="mask">
+            		<a href="{% url 'univ:facu_detalles' facu.Id %}">
+					<h6>{{ facu.Nombre }}</h6>
+		            <br />
+					<p>Decano: {{ facu.Autoridad }}</p>
+					</a>
+					<!-- <ul class="social">
+			            <li></li>
+			            <li></li>
+			        </ul> -->
+	            </div>
+	   		</div>
+		</div>
+		{% endif %}
+		{% endfor %}
+	<div class="clearfix"> </div>
+</div>
+{% endblock %}
+
+{% block noticias %}
+    <ul>
+    {% for new in all_news %}
+    	<li><span>{{ new.Fecha }}</span> : {{ new.Titulo }}.</li>
+    {% endfor %}
+    </ul>
+{% endblock %}

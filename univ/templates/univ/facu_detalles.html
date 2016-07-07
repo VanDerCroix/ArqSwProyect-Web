@@ -1,0 +1,51 @@
+{% extends 'univ/base.html' %}
+
+{% block content %}
+<div class="content">
+<div class="header">
+	<!-- Navbar-Starts-Here -->
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <!-- Logo --><a class="navbar-brand" href="{% url 'univ:index' %}">ARQUI</a><!-- //Logo -->
+            </div>
+
+        </div>
+    </nav>
+    <!-- //Navbar-Ends-Here -->
+</div>
+ <div class="container">
+    <!-- About-Starts-Here -->
+    <div class="about slideanim" id="about">
+        <h1 class="abbr">{{ facultad.Nombre }}</h1>
+        <h2>Decano: {{ facultad.Autoridad }}</h2>
+        <div class="about-info slideanim">
+            <div class="col-sm-offset-1 col-md-6 col-sm-6" id="about-pic">
+                <img src="{{ facultad.Ubicacion.URLFoto }}" alt="{{ facultad.Nombre }}">
+            </div>
+            <div class="col-md-4 col-sm-4" id="about-p">
+            	<span>Escuelas Academico Profesionales de la facultad:</span>
+			    <ul>
+                    {% for escuela in facultad.Escuelas %}
+                    <li><span>{{ escuela.Nombre }}</span></li>
+                    {% endfor %}
+			    </ul>
+            </div>
+            <div class="col-sm-offset-3 col-md-6 col-sm-6">
+                <br />
+                <br />
+                <span>Mapa de Referencia:</span>
+                <img src="https://maps.googleapis.com/maps/api/staticmap?zoom=18&size=600x300&maptype=roadmap&markers=icon:http://icons.iconarchive.com/icons/oxygen-icons.org/oxygen/32/Categories-applications-education-university-icon.png%7C{{ facultad.Ubicacion.Latitud }},{{ facultad.Ubicacion.Longitud }}&key=AIzaSyAYDqw3PvxTSmLRQ1fT_Dqz37KAGAoVk9Q">
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <br />
+        <div class="col-sm-offset-3 col-md-6 col-sm-6">
+            <h1 class="abbr"><a href="{% url 'univ:index' %}">REGRESAR</a></h1>
+        </div>
+		<br />
+    </div>
+    <!-- //About-Ends-Here -->
+</div>
+</div>
+{% endblock %}
