@@ -1,8 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import Http404
 # for json data retrieve
 import urllib.request as ur
 import json
+# for fb logout
+from django.contrib.auth import logout
 
 
 def index(request):
@@ -38,3 +40,8 @@ def facu_detalles(request, facu_id):
         return render(request, 'univ/facu_detalles.html', {'facultad': facultad})
     else:
         raise Http404("Facultad inexistente")
+
+# fb logout
+def LogOut(request):
+    logout(request)
+    return redirect('/')

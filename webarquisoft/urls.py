@@ -16,9 +16,14 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
+import univ.views
+
 urlpatterns = [
 	url(r'^', include('univ.urls')),
-    url(r'^admin/', admin.site.urls),
     url(r'^main/', include('univ.urls')),
+
+    url(r'^admin/', admin.site.urls),
+
  	url('', include('social.apps.django_app.urls', namespace='social')),
+ 	url(r'^salir/$', univ.views.LogOut),
 ]
