@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'social.apps.django_app.default',
     'univ.apps.UnivConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -120,3 +121,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# modded for FB login
+# login bbee
+AUTHENTICATION_BACKENDS = (
+    'social.backends.facebook.FacebookAppOAuth2',
+    'social.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+    )
+
+# url to return after login
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/'
+SOCIAL_AUTH_FACEBOOK_KEY = '869969296468743'
+SOCIAL_AUTH_FACEBOOK_SECRET = '957d045f1ff8269b6badd19b6834ab22'
